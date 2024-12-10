@@ -9,6 +9,8 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,6 +18,7 @@ import jakarta.persistence.Table;
 public class Account {
 
     @Id
+    @Column(name = "account_id")
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID accountId;
 
@@ -25,6 +28,10 @@ public class Account {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
+
+    @OneToOne(mappedBy = "account")
+    @PrimaryKeyJoinColumn
+    private BillingAddress billingAddress;
 
     public Account() {
     }
