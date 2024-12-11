@@ -25,7 +25,7 @@ public class AccountController {
     }
 
     @PostMapping("/{accountId}/stocks")
-    public ResponseEntity<Void> associateStock(@PathVariable("accountId") String accountId, @RequestBody AssociateAccountStockDto associateAccountStockDto) {
+    public ResponseEntity<Void> associateStock(@PathVariable String accountId, @RequestBody AssociateAccountStockDto associateAccountStockDto) {
 
         accountService.associateStock(accountId, associateAccountStockDto);
         
@@ -33,7 +33,7 @@ public class AccountController {
     }
 
     @GetMapping("/{accountId}/stocks")
-    public ResponseEntity<List<AccountStockResponseDto>> listStocks(@PathVariable("accountId") String accountId) {
+    public ResponseEntity<List<AccountStockResponseDto>> listStocks(@PathVariable String accountId) {
 
         var stocks = accountService.listStocks(accountId);
         
